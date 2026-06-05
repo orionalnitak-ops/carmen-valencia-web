@@ -1,0 +1,780 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Clínica Dental Valencia · Aguilar de la Frontera</title>
+  <meta name="description" content="Clínica Dental Valencia - Dra. Carmen Valencia Fernández. Odontología general, ortodoncia e implantes en Aguilar de la Frontera. Tel: 957660565" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet" />
+  <style>
+:root {
+  --blanco:      #FFFFFF;
+  --verde:       #78BE20;
+  --verde-dark:  #5A9118;
+  --verde-light: #EBF5D6;
+  --negro:       #1C1C1C;
+  --marron:      #2B1A0F;
+  --gris:        #F6F8F2;
+  --texto:       #1C1C1C;
+  --texto-mid:   #555555;
+  --r:           10px;
+  --shadow:      0 4px 24px rgba(0,0,0,0.07);
+  --shadow-lg:   0 12px 48px rgba(0,0,0,0.12);
+  --verde-rgb:   120,190,32;
+}
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+html { scroll-behavior: smooth; }
+body { font-family: 'Inter', sans-serif; color: var(--texto); background: var(--blanco); }
+img { display: block; max-width: 100%; }
+a { text-decoration: none; color: inherit; }
+
+.reveal {
+  opacity: 0;
+  transform: translateY(20px);
+  transition: opacity .6s ease-out, transform .6s ease-out;
+}
+.reveal.visible { opacity: 1; transform: translateY(0); }
+
+/* ── NAV ── */
+nav {
+  position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+  display: flex; align-items: center; justify-content: space-between;
+  padding: 0 5%; height: 88px;
+  background: var(--blanco);
+  border-bottom: 1px solid #f0f0f0;
+  transition: box-shadow .3s ease, border-color .3s ease;
+}
+nav.scrolled { box-shadow: 0 1px 20px rgba(0,0,0,0.08); border-color: transparent; }
+.nav-logo { display: flex; align-items: center; gap: 14px; }
+.logo-circle {
+  width: 72px; height: 72px; border-radius: 50%;
+  border: 2.5px solid var(--marron);
+  overflow: hidden; flex-shrink: 0;
+}
+.logo-circle img { width: 100%; height: 100%; object-fit: cover; display: block; }
+.nav-brand { display: flex; flex-direction: column; line-height: 1.25; }
+.nav-brand span:first-child {
+  font-family: 'Playfair Display', serif;
+  font-size: 1.4rem; font-weight: 700; color: var(--texto);
+}
+.nav-brand span:last-child {
+  font-size: 0.78rem; color: var(--verde);
+  font-weight: 600; letter-spacing: 0.09em; text-transform: uppercase;
+}
+.nav-links { display: flex; gap: 28px; align-items: center; }
+.nav-links a {
+  font-size: 0.85rem; color: var(--texto-mid);
+  font-weight: 500; transition: color .2s;
+}
+.nav-links a:hover { color: var(--verde); }
+.nav-ig {
+  display: inline-flex; align-items: center; gap: 6px;
+  font-size: 0.85rem; color: var(--texto-mid);
+  font-weight: 500; transition: color .2s;
+}
+.nav-ig:hover { color: var(--verde); }
+.nav-right { display: flex; align-items: center; gap: 16px; }
+.nav-tel { font-size: 0.85rem; font-weight: 600; color: var(--texto); }
+.nav-burger { display: none; flex-direction: column; gap: 5px; cursor: pointer; background: none; border: none; padding: 4px; }
+.nav-burger span { width: 24px; height: 2px; background: var(--texto); border-radius: 2px; transition: transform .3s ease; }
+
+/* ── HERO ── */
+#hero { background: var(--blanco); padding: 140px 5% 80px; }
+.hero-pre {
+  font-size: 0.72rem; font-weight: 700; letter-spacing: 0.14em;
+  text-transform: uppercase; color: var(--verde);
+  display: flex; align-items: center; gap: 14px;
+  margin-bottom: 20px;
+}
+.hero-pre::after {
+  content: ''; flex: 1; height: 1px;
+  background: linear-gradient(to right, var(--verde-light), transparent);
+  max-width: 240px;
+}
+.hero-h1 {
+  font-family: 'Playfair Display', serif;
+  font-size: clamp(2.8rem, 5vw, 4rem);
+  font-weight: 700; line-height: 1.0;
+  color: var(--texto); margin-bottom: 24px;
+}
+.hero-h1 em { color: var(--verde); font-style: normal; }
+.hero-divider {
+  width: 100%; height: 1px;
+  background: linear-gradient(to right, var(--verde), var(--verde-light), transparent);
+  margin-bottom: 28px;
+}
+.hero-bottom {
+  display: flex; justify-content: space-between;
+  align-items: flex-end; gap: 40px;
+}
+.hero-doc {
+  font-size: 0.9rem; color: var(--marron);
+  opacity: 0.55; font-style: italic; margin-bottom: 20px;
+}
+.hero-btns { display: flex; gap: 12px; flex-wrap: wrap; }
+.hero-stats { display: flex; gap: 32px; padding-bottom: 4px; }
+.hero-stat { text-align: right; }
+.hero-stat strong {
+  display: block; font-size: 1.6rem;
+  font-weight: 700; color: var(--texto); line-height: 1;
+}
+.hero-stat span {
+  font-size: 0.68rem; color: #bbb;
+  text-transform: uppercase; letter-spacing: 0.08em;
+}
+
+/* ── BOTONES GLOBALES ── */
+.btn-primary {
+  display: inline-flex; align-items: center; gap: 8px;
+  background: var(--negro); color: var(--blanco);
+  padding: 13px 24px; border-radius: 50px;
+  font-weight: 600; font-size: 0.92rem;
+  transition: background .2s, transform .15s;
+}
+.btn-primary:hover { background: var(--marron); transform: translateY(-2px); }
+.btn-secondary {
+  display: inline-flex; align-items: center; gap: 8px;
+  background: transparent; color: var(--texto);
+  border: 1.5px solid #ddd;
+  padding: 13px 24px; border-radius: 50px;
+  font-weight: 500; font-size: 0.92rem;
+  transition: border-color .2s, background .2s, transform .15s;
+}
+.btn-secondary:hover { border-color: #ddd; background: #f5f5f5; transform: translateY(-2px); }
+
+/* ── COMMONS DE SECCIÓN ── */
+section { padding: 96px 5%; }
+.section-label {
+  display: inline-block;
+  color: var(--verde-dark); font-size: 0.72rem;
+  font-weight: 700; letter-spacing: 0.14em;
+  text-transform: uppercase; margin-bottom: 12px;
+}
+.section-title {
+  font-family: 'Playfair Display', serif;
+  font-size: clamp(1.8rem, 3.2vw, 2.6rem);
+  font-weight: 700; line-height: 1.2; margin-bottom: 14px;
+}
+.section-sub {
+  color: var(--texto-mid); font-size: 0.92rem;
+  max-width: 520px; line-height: 1.65;
+}
+.max-w { max-width: 1100px; margin: 0 auto; }
+
+/* ── NOSOTROS ── */
+#nosotros { background: var(--gris); padding: 0; }
+.about-inner {
+  display: grid; grid-template-columns: 5fr 6fr;
+  max-width: 1100px; margin: 0 auto;
+}
+.about-img-col { padding: 96px 48px 96px 5%; }
+.about-img-main {
+  width: 100%; aspect-ratio: 4/5; object-fit: cover;
+  border-radius: 12px; box-shadow: var(--shadow-lg); max-height: 560px;
+}
+.about-text-col {
+  padding: 96px 5% 96px 48px;
+  border-left: 1px solid #e8e8e8;
+}
+.about-text-col .section-title { margin-bottom: 20px; }
+.about-text-col p {
+  color: var(--texto-mid); line-height: 1.7;
+  margin-bottom: 16px; font-size: 0.92rem;
+}
+.about-features { margin: 24px 0 32px; display: flex; flex-direction: column; gap: 16px; }
+.about-feat { display: flex; align-items: flex-start; gap: 14px; }
+.about-feat-icon {
+  width: 28px; height: 28px; border-radius: 7px;
+  background: var(--gris);
+  display: flex; align-items: center; justify-content: center;
+  flex-shrink: 0; margin-top: 2px;
+}
+.about-feat-icon svg { width: 14px; height: 14px; fill: var(--negro); }
+.about-feat-text strong { font-size: 0.9rem; display: block; margin-bottom: 2px; }
+.about-feat-text span { font-size: 0.82rem; color: var(--texto-mid); }
+
+/* ── CTA STRIP ── */
+#cta-strip { background: var(--marron); padding: 56px 5%; }
+.cta-strip-inner {
+  max-width: 1100px; margin: 0 auto;
+  display: flex; align-items: center;
+  justify-content: space-between; gap: 32px;
+}
+.cta-strip-left h2 {
+  font-family: 'Playfair Display', serif;
+  font-size: clamp(1.5rem, 2.5vw, 2rem);
+  font-weight: 700; color: var(--blanco); margin-bottom: 6px;
+}
+.cta-strip-left p { font-size: 0.9rem; color: rgba(255,255,255,0.85); }
+.btn-cta-strip {
+  background: var(--blanco); color: var(--verde);
+  padding: 14px 30px; border-radius: 50px;
+  font-size: 0.92rem; font-weight: 700; white-space: nowrap;
+  transition: transform .15s, box-shadow .15s;
+}
+.btn-cta-strip:hover { transform: translateY(-2px); box-shadow: 0 6px 20px rgba(0,0,0,0.15); }
+
+/* ── GALERÍA ── */
+#galeria { background: var(--negro); padding: 96px 5%; }
+.gallery-head { text-align: center; margin-bottom: 48px; }
+.gallery-head .section-label { color: var(--verde); }
+.gallery-head .section-title { color: var(--blanco); }
+.gallery-head .section-sub { color: rgba(255,255,255,0.55); margin: 0 auto; }
+.ig-highlights {
+  display: flex; justify-content: center; flex-wrap: wrap;
+  gap: 24px; max-width: 1100px; margin: 0 auto 44px;
+}
+.ig-highlight { display: flex; flex-direction: column; align-items: center; gap: 8px; cursor: pointer; }
+.ig-highlight-ring {
+  width: 76px; height: 76px; border-radius: 50%;
+  padding: 3px;
+  background: linear-gradient(45deg, var(--verde), #a8e063);
+}
+.ig-highlight-ring img {
+  width: 100%; height: 100%; border-radius: 50%;
+  object-fit: cover; border: 3px solid var(--negro);
+}
+.ig-highlight span {
+  color: rgba(255,255,255,0.75); font-size: 0.7rem;
+  font-weight: 500; letter-spacing: 0.06em; text-align: center;
+}
+.gallery-grid {
+  display: grid; grid-template-columns: repeat(4, 1fr);
+  gap: 6px; max-width: 1100px; margin: 0 auto;
+  border-radius: 8px; overflow: hidden;
+}
+.gallery-grid-item { overflow: hidden; aspect-ratio: 1; }
+.gallery-grid-item img {
+  width: 100%; height: 100%; object-fit: cover;
+  display: block; transition: transform .4s ease;
+}
+.gallery-grid-item:hover img { transform: scale(1.04); }
+.gallery-cta { text-align: center; margin-top: 36px; }
+.gallery-cta a {
+  display: inline-flex; align-items: center; gap: 10px;
+  border: 1.5px solid rgba(255,255,255,0.25);
+  color: rgba(255,255,255,0.8);
+  padding: 13px 28px; border-radius: 50px;
+  font-size: 0.88rem; font-weight: 500;
+  transition: border-color .2s, color .2s;
+}
+.gallery-cta a:hover { border-color: rgba(255,255,255,0.6); color: var(--blanco); }
+.gallery-cta svg { width: 18px; height: 18px; fill: rgba(255,255,255,0.8); }
+
+/* ── CONTACTO ── */
+#contacto { background: var(--marron); }
+#contacto .section-label { color: rgba(255,255,255,0.6); }
+#contacto .section-title { color: var(--blanco); }
+#contacto .contact-info > p { color: rgba(255,255,255,0.75); }
+.contact-inner { display: grid; grid-template-columns: 1fr 1fr; gap: 64px; align-items: start; }
+.contact-info .section-title { margin-bottom: 16px; }
+.contact-info > p { color: var(--texto-mid); line-height: 1.7; margin-bottom: 32px; font-size: 0.92rem; }
+.contact-items { display: flex; flex-direction: column; gap: 18px; margin-bottom: 32px; }
+.contact-item { display: flex; align-items: flex-start; gap: 14px; }
+.contact-item-icon {
+  width: 42px; height: 42px; border-radius: 9px;
+  background: rgba(255,255,255,0.12);
+  display: flex; align-items: center; justify-content: center; flex-shrink: 0;
+}
+.contact-item-icon svg { width: 18px; height: 18px; fill: var(--blanco); }
+.contact-item-text strong { font-size: 0.85rem; display: block; margin-bottom: 3px; color: var(--blanco); }
+.contact-item-text span { color: rgba(255,255,255,0.7); font-size: 0.88rem; line-height: 1.55; }
+.contact-item-text a { color: var(--blanco); transition: color .2s; }
+.contact-item-text a:hover { color: rgba(255,255,255,0.75); }
+.horario-table { border-collapse: collapse; margin-top: 2px; }
+.horario-table tr { border-bottom: 1px solid rgba(255,255,255,0.08); }
+.horario-table tr:last-child { border-bottom: none; }
+.horario-table td { padding: 4px 0; font-size: 0.83rem; color: rgba(255,255,255,0.7); vertical-align: top; }
+.horario-table td:first-child { font-weight: 600; color: var(--blanco); width: 86px; padding-right: 10px; }
+.btn-whatsapp {
+  display: inline-flex; align-items: center; gap: 10px;
+  background: #25D366; color: var(--blanco);
+  padding: 13px 26px; border-radius: 50px;
+  font-weight: 600; font-size: 0.92rem;
+  box-shadow: 0 4px 16px rgba(37,211,102,0.3);
+  transition: background .2s, transform .15s;
+}
+.btn-whatsapp:hover { background: #1ebe5b; transform: translateY(-2px); }
+.btn-whatsapp svg { width: 20px; height: 20px; fill: var(--blanco); }
+.contact-map { border-radius: 14px; overflow: hidden; box-shadow: var(--shadow-lg); height: 400px; }
+.contact-map iframe { width: 100%; height: 100%; border: none; }
+
+/* ── SERVICIOS ── */
+#servicios { background: var(--blanco); }
+.services-head { text-align: center; margin-bottom: 52px; }
+.services-head .section-sub { margin: 0 auto; }
+.services-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 18px; }
+.service-card {
+  background: var(--blanco); border: 1px solid #eee;
+  border-radius: var(--r); padding: 28px 22px;
+  position: relative; overflow: hidden;
+  transition: transform .25s ease, box-shadow .25s ease;
+}
+.service-card::after {
+  content: ''; position: absolute; bottom: 0; left: 0; right: 0;
+  height: 3px; background: var(--negro);
+  transform: scaleX(0); transform-origin: left;
+  transition: transform .3s ease;
+}
+.service-card:hover { transform: translateY(-4px); box-shadow: var(--shadow-lg); }
+.service-card:hover::after { transform: scaleX(1); }
+.service-dot { width: 10px; height: 10px; background: var(--negro); border-radius: 50%; margin-bottom: 18px; }
+.service-card h3 {
+  font-family: 'Playfair Display', serif;
+  font-size: 1.1rem; font-weight: 600; margin-bottom: 8px;
+}
+.service-card p { color: var(--texto-mid); font-size: 0.82rem; line-height: 1.6; }
+
+/* ── FOOTER ── */
+footer { background: var(--negro); color: rgba(255,255,255,0.55); padding: 48px 5% 28px; }
+.footer-inner {
+  max-width: 1100px; margin: 0 auto;
+  display: flex; align-items: center; justify-content: space-between;
+  flex-wrap: wrap; gap: 24px;
+  padding-bottom: 28px; border-bottom: 1px solid rgba(255,255,255,0.08);
+}
+.footer-brand { display: flex; align-items: center; gap: 12px; }
+.footer-brand img { width: 40px; height: 40px; border-radius: 50%; border: 2px solid var(--marron); object-fit: cover; }
+.footer-brand-name strong { display: block; color: var(--blanco); font-size: 0.92rem; }
+.footer-brand-name span { font-size: 0.72rem; color: var(--verde); }
+.footer-links { display: flex; gap: 22px; flex-wrap: wrap; }
+.footer-links a { font-size: 0.83rem; transition: color .2s; }
+.footer-links a:hover { color: var(--blanco); }
+.footer-social { display: flex; gap: 12px; }
+.footer-social a {
+  width: 36px; height: 36px; border-radius: 50%;
+  border: 1px solid rgba(255,255,255,0.18);
+  display: flex; align-items: center; justify-content: center;
+  transition: border-color .2s, background .2s;
+}
+.footer-social a:hover { border-color: var(--marron); background: rgba(43,26,15,0.1); }
+.footer-social svg { width: 15px; height: 15px; fill: rgba(255,255,255,0.55); }
+.footer-bottom { max-width: 1100px; margin: 20px auto 0; text-align: center; font-size: 0.8rem; }
+
+/* ── RESPONSIVE ── */
+@media (max-width: 900px) {
+  .nav-links, .nav-tel { display: none; }
+  .nav-burger { display: flex; }
+  .nav-links.open {
+    display: flex; flex-direction: column;
+    position: absolute; top: 88px; left: 0; right: 0;
+    background: var(--blanco); padding: 20px 5%;
+    border-bottom: 1px solid #f0f0f0; gap: 16px; z-index: 99;
+  }
+  #hero { padding: 120px 5% 64px; }
+  .hero-bottom { flex-direction: column; align-items: flex-start; gap: 24px; }
+  .hero-stats { justify-content: flex-start; }
+  .hero-stat { text-align: left; }
+  .services-grid { grid-template-columns: 1fr 1fr; }
+  .about-inner { grid-template-columns: 1fr; }
+  .about-img-col { padding: 72px 5% 0; }
+  .about-text-col { border-left: none; border-top: 1px solid #e8e8e8; padding: 48px 5% 72px; }
+  .cta-strip-inner { flex-direction: column; text-align: center; }
+  .gallery-grid { grid-template-columns: repeat(2, 1fr); }
+  .contact-inner { grid-template-columns: 1fr; }
+  .contact-map { height: 280px; }
+}
+@media (max-width: 600px) {
+  section { padding: 72px 5%; }
+  #hero { padding: 110px 5% 56px; }
+  .services-grid { grid-template-columns: 1fr; }
+  .footer-inner { flex-direction: column; align-items: flex-start; }
+}
+  </style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav id="nav">
+  <a href="#hero" class="nav-logo">
+    <div class="logo-circle">
+      <img src="assets/instagram/profile.jpg" alt="Logo Clínica Dental Valencia" />
+    </div>
+    <div class="nav-brand">
+      <span>Clínica Dental Valencia</span>
+      <span>Aguilar de la Frontera</span>
+    </div>
+  </a>
+  <div class="nav-links" id="nav-links">
+    <a href="#nosotros">Nosotros</a>
+    <a href="#galeria">Galería</a>
+    <a href="#contacto">Contacto</a>
+    <a href="https://www.instagram.com/cl.dentalvalencia/" target="_blank" rel="noopener" class="nav-ig">
+      <svg viewBox="0 0 24 24" width="15" height="15" fill="currentColor"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zM12 0C8.741 0 8.333.014 7.053.072 2.695.272.273 2.69.073 7.052.014 8.333 0 8.741 0 12c0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98C8.333 23.986 8.741 24 12 24c3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98C15.668.014 15.259 0 12 0zm0 5.838a6.162 6.162 0 100 12.324 6.162 6.162 0 000-12.324zM12 16a4 4 0 110-8 4 4 0 010 8zm6.406-11.845a1.44 1.44 0 100 2.881 1.44 1.44 0 000-2.881z"/></svg>
+      Instagram
+    </a>
+  </div>
+  <div class="nav-right">
+    <a href="tel:957660565" class="nav-tel">957 660 565</a>
+    <button class="nav-burger" id="nav-burger" aria-label="Menú" aria-expanded="false">
+      <span></span><span></span><span></span>
+    </button>
+  </div>
+</nav>
+
+<!-- HERO -->
+<section id="hero">
+  <div class="max-w">
+    <p class="hero-pre">Clínica Dental · Aguilar de la Frontera · Córdoba</p>
+    <h1 class="hero-h1">La sonrisa que mereces,<br />en manos <em>expertas</em></h1>
+    <div class="hero-divider"></div>
+    <div class="hero-bottom">
+      <div class="hero-left">
+        <p class="hero-doc">Dra. Carmen Valencia Fernández · Col. Nº 14/00/1954</p>
+        <div class="hero-btns">
+          <a href="tel:957660565" class="btn-primary">
+            <svg viewBox="0 0 24 24" width="18" height="18" fill="currentColor"><path d="M6.62 10.79a15.05 15.05 0 006.59 6.59l2.2-2.2a1 1 0 011.01-.24c1.12.37 2.33.57 3.58.57a1 1 0 011 1V20a1 1 0 01-1 1C10.39 21 3 13.61 3 4a1 1 0 011-1h3.5a1 1 0 011 1c0 1.25.2 2.45.57 3.58a1 1 0 01-.24 1.01l-2.21 2.2z"/></svg>
+            Pedir cita · 957 660 565
+          </a>
+          <a href="https://wa.me/34638867962" target="_blank" rel="noopener" class="btn-secondary">
+            <svg viewBox="0 0 24 24" width="18" height="18" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51a12.8 12.8 0 00-.57-.01c-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+            WhatsApp
+          </a>
+        </div>
+      </div>
+      <div class="hero-stats">
+        <div class="hero-stat">
+          <strong data-count="15">0</strong>
+          <span>Años exp.</span>
+        </div>
+        <div class="hero-stat">
+          <strong>2025</strong>
+          <span>Renovada</span>
+        </div>
+        <div class="hero-stat">
+          <strong data-count="6">0</strong>
+          <span>Servicios</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- NOSOTROS -->
+<section id="nosotros">
+  <div class="about-inner">
+    <div class="about-img-col">
+      <img class="about-img-main" src="assets/instagram/post_9.jpg" alt="Clínica Dental Valencia — interior renovado 2025" />
+    </div>
+    <div class="about-text-col reveal">
+      <span class="section-label">Nuestra clínica</span>
+      <h2 class="section-title">La Dra. Valencia<br />y su equipo</h2>
+      <p>La <strong>Dra. Carmen Valencia Fernández</strong> lidera un equipo de profesionales comprometidos con la excelencia odontológica. Con más de 15 años de experiencia en odontología general, ortodoncia e implantología, nuestra clínica es un referente de confianza en Aguilar de la Frontera.</p>
+      <p>En 2025 renovamos íntegramente las instalaciones con el diseño de <strong>@esbozo.interiorismo</strong>, para ofrecerte la mejor tecnología en un ambiente moderno y acogedor.</p>
+      <div class="about-features">
+        <div class="about-feat">
+          <div class="about-feat-icon">
+            <svg viewBox="0 0 24 24"><path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z"/></svg>
+          </div>
+          <div class="about-feat-text">
+            <strong>Tecnología de última generación</strong>
+            <span>Radiografía digital, escáner intraoral y equipos de diagnóstico avanzados.</span>
+          </div>
+        </div>
+        <div class="about-feat">
+          <div class="about-feat-icon">
+            <svg viewBox="0 0 24 24"><path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z"/></svg>
+          </div>
+          <div class="about-feat-text">
+            <strong>Atención personalizada</strong>
+            <span>Cada paciente recibe un plan de tratamiento adaptado a sus necesidades.</span>
+          </div>
+        </div>
+        <div class="about-feat">
+          <div class="about-feat-icon">
+            <svg viewBox="0 0 24 24"><path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z"/></svg>
+          </div>
+          <div class="about-feat-text">
+            <strong>Nº colegiado 14/00/1954</strong>
+            <span>Profesional colegiada con toda la garantía y habilitación oficial.</span>
+          </div>
+        </div>
+      </div>
+      <a href="tel:957660565" class="btn-primary">
+        <svg viewBox="0 0 24 24" width="18" height="18" fill="currentColor"><path d="M6.62 10.79a15.05 15.05 0 006.59 6.59l2.2-2.2a1 1 0 011.01-.24c1.12.37 2.33.57 3.58.57a1 1 0 011 1V20a1 1 0 01-1 1C10.39 21 3 13.61 3 4a1 1 0 011-1h3.5a1 1 0 011 1c0 1.25.2 2.45.57 3.58a1 1 0 01-.24 1.01l-2.21 2.2z"/></svg>
+        Pedir cita
+      </a>
+    </div>
+  </div>
+</section>
+
+<!-- CTA STRIP -->
+<section id="cta-strip">
+  <div class="cta-strip-inner">
+    <div class="cta-strip-left">
+      <h2>¿Lista para tu nueva sonrisa?</h2>
+      <p>Llámanos hoy y reserva tu cita. Te atendemos con toda la dedicación que mereces.</p>
+    </div>
+    <a href="tel:957660565" class="btn-cta-strip">Llamar ahora · 957 660 565</a>
+  </div>
+</section>
+
+<!-- GALERÍA -->
+<section id="galeria">
+  <div class="gallery-head max-w">
+    <span class="section-label">Instagram</span>
+    <h2 class="section-title">Síguenos en Instagram</h2>
+    <p class="section-sub">Descubre los tratamientos, el día a día de la clínica y los resultados reales de nuestros pacientes.</p>
+  </div>
+
+  <div class="ig-highlights">
+    <a href="https://www.instagram.com/cl.dentalvalencia/" target="_blank" rel="noopener" class="ig-highlight">
+      <div class="ig-highlight-ring"><img src="assets/instagram/post_2.jpg" alt="Formación" loading="lazy" /></div>
+      <span>FORMACIÓN</span>
+    </a>
+    <a href="https://www.instagram.com/cl.dentalvalencia/" target="_blank" rel="noopener" class="ig-highlight">
+      <div class="ig-highlight-ring"><img src="assets/instagram/post_3.jpg" alt="Ortodoncia" loading="lazy" /></div>
+      <span>ORTODONCIA</span>
+    </a>
+    <a href="https://www.instagram.com/cl.dentalvalencia/" target="_blank" rel="noopener" class="ig-highlight">
+      <div class="ig-highlight-ring"><img src="assets/instagram/post_4.jpg" alt="Clínica" loading="lazy" /></div>
+      <span>CLÍNICA</span>
+    </a>
+    <a href="https://www.instagram.com/cl.dentalvalencia/" target="_blank" rel="noopener" class="ig-highlight">
+      <div class="ig-highlight-ring"><img src="assets/instagram/post_5.jpg" alt="Reforma" loading="lazy" /></div>
+      <span>REFORMA</span>
+    </a>
+    <a href="https://www.instagram.com/cl.dentalvalencia/" target="_blank" rel="noopener" class="ig-highlight">
+      <div class="ig-highlight-ring"><img src="assets/instagram/post_6.jpg" alt="Pacientes" loading="lazy" /></div>
+      <span>PACIENTES</span>
+    </a>
+    <a href="https://www.instagram.com/cl.dentalvalencia/" target="_blank" rel="noopener" class="ig-highlight">
+      <div class="ig-highlight-ring"><img src="assets/instagram/post_7.jpg" alt="Estética AOF" loading="lazy" /></div>
+      <span>ESTÉTICA AOF</span>
+    </a>
+    <a href="https://www.instagram.com/cl.dentalvalencia/" target="_blank" rel="noopener" class="ig-highlight">
+      <div class="ig-highlight-ring"><img src="assets/instagram/post_8.jpg" alt="RMR" loading="lazy" /></div>
+      <span>RMR</span>
+    </a>
+  </div>
+
+  <div class="gallery-grid max-w">
+    <div class="gallery-grid-item"><img src="assets/instagram/post_1.jpg" alt="Post clínica" loading="lazy" /></div>
+    <div class="gallery-grid-item"><img src="assets/instagram/post_2.jpg" alt="Formación" loading="lazy" /></div>
+    <div class="gallery-grid-item"><img src="assets/instagram/post_3.jpg" alt="Ortodoncia" loading="lazy" /></div>
+    <div class="gallery-grid-item"><img src="assets/instagram/post_4.jpg" alt="Clínica" loading="lazy" /></div>
+    <div class="gallery-grid-item"><img src="assets/instagram/post_5.jpg" alt="Reforma" loading="lazy" /></div>
+    <div class="gallery-grid-item"><img src="assets/instagram/post_6.jpg" alt="Pacientes" loading="lazy" /></div>
+    <div class="gallery-grid-item"><img src="assets/instagram/post_7.jpg" alt="Estética" loading="lazy" /></div>
+    <div class="gallery-grid-item"><img src="assets/instagram/post_8.jpg" alt="RMR" loading="lazy" /></div>
+  </div>
+
+  <div class="gallery-cta">
+    <a href="https://www.instagram.com/cl.dentalvalencia/" target="_blank" rel="noopener">
+      <svg viewBox="0 0 24 24"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zM12 0C8.741 0 8.333.014 7.053.072 2.695.272.273 2.69.073 7.052.014 8.333 0 8.741 0 12c0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98C8.333 23.986 8.741 24 12 24c3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98C15.668.014 15.259 0 12 0zm0 5.838a6.162 6.162 0 100 12.324 6.162 6.162 0 000-12.324zM12 16a4 4 0 110-8 4 4 0 010 8zm6.406-11.845a1.44 1.44 0 100 2.881 1.44 1.44 0 000-2.881z"/></svg>
+      Ver todos los posts en @cl.dentalvalencia →
+    </a>
+  </div>
+</section>
+
+<!-- CONTACTO -->
+<section id="contacto">
+  <div class="contact-inner max-w">
+    <div class="contact-info">
+      <span class="section-label">Contacto</span>
+      <h2 class="section-title">¿Hablamos?<br />Pide tu cita hoy</h2>
+      <p>Estamos en Aguilar de la Frontera, a tu disposición. Llámanos, escríbenos por WhatsApp o pásate directamente por la clínica.</p>
+      <div class="contact-items">
+        <div class="contact-item">
+          <div class="contact-item-icon">
+            <svg viewBox="0 0 24 24"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5a2.5 2.5 0 010-5 2.5 2.5 0 010 5z"/></svg>
+          </div>
+          <div class="contact-item-text">
+            <strong>Dirección</strong>
+            <span>Calle Llano de las Coronadas 24<br />Aguilar de la Frontera, Córdoba 14920</span>
+          </div>
+        </div>
+        <div class="contact-item">
+          <div class="contact-item-icon">
+            <svg viewBox="0 0 24 24"><path d="M6.62 10.79a15.05 15.05 0 006.59 6.59l2.2-2.2a1 1 0 011.01-.24c1.12.37 2.33.57 3.58.57a1 1 0 011 1V20a1 1 0 01-1 1C10.39 21 3 13.61 3 4a1 1 0 011-1h3.5a1 1 0 011 1c0 1.25.2 2.45.57 3.58a1 1 0 01-.24 1.01l-2.21 2.2z"/></svg>
+          </div>
+          <div class="contact-item-text">
+            <strong>Teléfonos</strong>
+            <span>
+              <a href="tel:957660565">957 660 565</a><br />
+              <a href="tel:638867962">638 867 962</a>
+            </span>
+          </div>
+        </div>
+        <div class="contact-item">
+          <div class="contact-item-icon">
+            <svg viewBox="0 0 24 24"><path d="M12 2a10 10 0 110 20A10 10 0 0112 2zm1 5h-2v6l5.25 3.15.75-1.23-4-2.42V7z"/></svg>
+          </div>
+          <div class="contact-item-text">
+            <strong>Horario</strong>
+            <table class="horario-table">
+              <tr><td>Lunes</td><td>10:00–12:00 · 16:30–20:00</td></tr>
+              <tr><td>Martes</td><td>09:30–13:30 · 16:30–20:00</td></tr>
+              <tr><td>Miércoles</td><td>09:30–13:30 · 16:30–20:00</td></tr>
+              <tr><td>Jueves</td><td>16:00–20:00</td></tr>
+              <tr><td>Viernes</td><td>09:30–13:30 · 16:30–20:00</td></tr>
+            </table>
+          </div>
+        </div>
+      </div>
+      <a href="https://wa.me/34638867962?text=Hola,%20me%20gustaría%20pedir%20cita" target="_blank" rel="noopener" class="btn-whatsapp">
+        <svg viewBox="0 0 24 24"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51a12.8 12.8 0 00-.57-.01c-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+        Escríbenos por WhatsApp
+      </a>
+    </div>
+    <div class="contact-map">
+      <iframe
+        src="https://maps.google.com/maps?q=Calle+Llano+de+las+Coronadas+24+Aguilar+de+la+Frontera&output=embed&z=16"
+        allowfullscreen loading="lazy"
+        referrerpolicy="no-referrer-when-downgrade"
+        title="Localización Clínica Dental Valencia"
+      ></iframe>
+    </div>
+  </div>
+</section>
+
+<!-- SERVICIOS -->
+<section id="servicios">
+  <div class="max-w">
+    <div class="services-head">
+      <span class="section-label">Tratamientos</span>
+      <h2 class="section-title">Todo lo que necesita<br />tu boca en un solo lugar</h2>
+      <p class="section-sub">Utilizamos las técnicas más avanzadas y materiales de última generación para ofrecerte los mejores resultados.</p>
+    </div>
+    <div class="services-grid">
+
+      <div class="service-card reveal">
+        <div class="service-dot"></div>
+        <h3>Odontología General</h3>
+        <p>Revisiones, limpiezas, empastes y tratamientos preventivos para mantener tu salud bucodental en perfectas condiciones.</p>
+      </div>
+
+      <div class="service-card reveal">
+        <div class="service-dot"></div>
+        <h3>Ortodoncia</h3>
+        <p>Brackets metálicos, estéticos y alineadores transparentes para corregir la posición de tus dientes de forma efectiva y discreta.</p>
+      </div>
+
+      <div class="service-card reveal">
+        <div class="service-dot"></div>
+        <h3>Implantes Dentales</h3>
+        <p>La solución definitiva para reponer dientes perdidos con implantes de titanio de alta calidad que se integran de forma natural.</p>
+      </div>
+
+      <div class="service-card reveal">
+        <div class="service-dot"></div>
+        <h3>Estética Dental</h3>
+        <p>Carillas de porcelana, blanqueamiento dental y diseño de sonrisa para conseguir los dientes que siempre has soñado.</p>
+      </div>
+
+      <div class="service-card reveal">
+        <div class="service-dot"></div>
+        <h3>Odontopediatría</h3>
+        <p>Atención especializada para los más pequeños en un ambiente cálido y de confianza, cuidando su salud dental desde la infancia.</p>
+      </div>
+
+      <div class="service-card reveal">
+        <div class="service-dot"></div>
+        <h3>Urgencias Dentales</h3>
+        <p>Atención rápida y eficaz ante cualquier emergencia dental. No dejes que el dolor te detenga, llámanos de inmediato.</p>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="footer-inner">
+    <div class="footer-brand">
+      <img src="assets/instagram/profile.jpg" alt="Logo" />
+      <div class="footer-brand-name">
+        <strong>Clínica Dental Valencia</strong>
+        <span>@cl.dentalvalencia</span>
+      </div>
+    </div>
+    <div class="footer-links">
+      <a href="#nosotros">Nosotros</a>
+      <a href="#galeria">Galería</a>
+      <a href="#contacto">Contacto</a>
+      <a href="#servicios">Servicios</a>
+      <a href="tel:957660565">957 660 565</a>
+    </div>
+    <div class="footer-social">
+      <a href="https://www.instagram.com/cl.dentalvalencia/" target="_blank" rel="noopener" title="Instagram">
+        <svg viewBox="0 0 24 24"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zM12 0C8.741 0 8.333.014 7.053.072 2.695.272.273 2.69.073 7.052.014 8.333 0 8.741 0 12c0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98C8.333 23.986 8.741 24 12 24c3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98C15.668.014 15.259 0 12 0zm0 5.838a6.162 6.162 0 100 12.324 6.162 6.162 0 000-12.324zM12 16a4 4 0 110-8 4 4 0 010 8zm6.406-11.845a1.44 1.44 0 100 2.881 1.44 1.44 0 000-2.881z"/></svg>
+      </a>
+      <a href="https://wa.me/34638867962" target="_blank" rel="noopener" title="WhatsApp">
+        <svg viewBox="0 0 24 24"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51a12.8 12.8 0 00-.57-.01c-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+      </a>
+      <a href="tel:957660565" title="Teléfono">
+        <svg viewBox="0 0 24 24"><path d="M6.62 10.79a15.05 15.05 0 006.59 6.59l2.2-2.2a1 1 0 011.01-.24c1.12.37 2.33.57 3.58.57a1 1 0 011 1V20a1 1 0 01-1 1C10.39 21 3 13.61 3 4a1 1 0 011-1h3.5a1 1 0 011 1c0 1.25.2 2.45.57 3.58a1 1 0 01-.24 1.01l-2.21 2.2z"/></svg>
+      </a>
+    </div>
+  </div>
+  <div class="footer-bottom">
+    © 2025 Clínica Dental Valencia · Dra. Carmen Valencia Fernández · Aguilar de la Frontera
+  </div>
+</footer>
+
+<script>
+  const nav = document.getElementById('nav');
+  window.addEventListener('scroll', () => {
+    nav.classList.toggle('scrolled', window.scrollY > 10);
+  }, { passive: true });
+
+  const burger = document.getElementById('nav-burger');
+  const navLinks = document.getElementById('nav-links');
+  burger.addEventListener('click', () => {
+    const open = navLinks.classList.toggle('open');
+    burger.setAttribute('aria-expanded', open);
+  });
+  navLinks.querySelectorAll('a').forEach(link => {
+    link.addEventListener('click', () => {
+      navLinks.classList.remove('open');
+      burger.setAttribute('aria-expanded', 'false');
+    });
+  });
+
+  function animateCounter(el) {
+    const target = parseInt(el.dataset.count, 10);
+    const duration = 1200;
+    const start = performance.now();
+    const tick = (now) => {
+      const elapsed = now - start;
+      const progress = Math.min(elapsed / duration, 1);
+      const eased = 1 - Math.pow(1 - progress, 3);
+      el.textContent = (target > 10 ? '+' : '') + Math.round(eased * target);
+      if (progress < 1) requestAnimationFrame(tick);
+    };
+    requestAnimationFrame(tick);
+  }
+
+  const io = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (!entry.isIntersecting) return;
+      const el = entry.target;
+      if (el.classList.contains('service-card')) {
+        const cards = [...document.querySelectorAll('.service-card')];
+        const idx = cards.indexOf(el);
+        setTimeout(() => el.classList.add('visible'), idx * 80);
+      } else {
+        el.classList.add('visible');
+      }
+      io.unobserve(el);
+    });
+  }, { threshold: 0.12 });
+
+  document.querySelectorAll('.reveal, .service-card').forEach(el => io.observe(el));
+
+  document.addEventListener('DOMContentLoaded', () => {
+    const h1 = document.querySelector('.hero-h1');
+    const btns = document.querySelector('.hero-btns');
+    if (h1) { h1.style.opacity = '0'; h1.style.transform = 'translateY(30px)'; }
+    if (btns) { btns.style.opacity = '0'; btns.style.transform = 'translateY(20px)'; }
+    requestAnimationFrame(() => {
+      if (h1) { h1.style.transition = 'opacity .7s ease-out, transform .7s ease-out'; h1.style.opacity = '1'; h1.style.transform = 'translateY(0)'; }
+      if (btns) { btns.style.transition = 'opacity .7s ease-out .2s, transform .7s ease-out .2s'; btns.style.opacity = '1'; btns.style.transform = 'translateY(0)'; }
+    });
+    document.querySelectorAll('[data-count]').forEach(animateCounter);
+  });
+</script>
+</body>
+</html>
