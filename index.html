@@ -76,7 +76,8 @@ nav.scrolled { box-shadow: 0 1px 20px rgba(0,0,0,0.08); border-color: transparen
 }
 .nav-ig:hover { color: var(--verde); }
 .nav-right { display: flex; align-items: center; gap: 16px; }
-.nav-tel { font-size: 0.85rem; font-weight: 600; color: var(--texto); }
+.nav-tel { font-size: 1rem; font-weight: 700; color: var(--texto); display: flex; align-items: center; gap: 6px; }
+.nav-tel .nav-wa-badge { font-size: 0.7rem; font-weight: 600; background: #25D366; color: #fff; border-radius: 4px; padding: 2px 6px; letter-spacing: 0.04em; }
 .nav-burger { display: none; flex-direction: column; gap: 5px; cursor: pointer; background: none; border: none; padding: 4px; }
 .nav-burger span { width: 24px; height: 2px; background: var(--texto); border-radius: 2px; transition: transform .3s ease; }
 
@@ -407,7 +408,7 @@ footer { background: var(--negro); color: rgba(255,255,255,0.55); padding: 48px 
     </a>
   </div>
   <div class="nav-right">
-    <a href="tel:957660565" class="nav-tel">957 660 565</a>
+    <a href="tel:957660565" class="nav-tel"><span class="nav-wa-badge">WhatsApp</span>957 660 565</a>
     <button class="nav-burger" id="nav-burger" aria-label="Menú" aria-expanded="false">
       <span></span><span></span><span></span>
     </button>
