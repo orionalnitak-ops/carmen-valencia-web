@@ -95,9 +95,15 @@ nav.scrolled .nav-tel {
 .nav-burger span { width: 24px; height: 2px; background: var(--blanco); border-radius: 2px; }
 
 @keyframes kenburns {
-  0%   { transform: scale(1)    translateX(0)     translateY(0); }
-  50%  { transform: scale(1.06) translateX(-1%)   translateY(-1%); }
-  100% { transform: scale(1)    translateX(0)     translateY(0); }
+  0%   { transform: scale(1)    translateX(0)      translateY(0); }
+  50%  { transform: scale(1.03) translateX(-0.4%)  translateY(-0.3%); }
+  100% { transform: scale(1)    translateX(0)      translateY(0); }
+}
+@keyframes sunset-glow {
+  0%   { opacity: 0.0; }
+  25%  { opacity: 1.0; }
+  60%  { opacity: 0.75; }
+  100% { opacity: 0.0; }
 }
 
 /* ── HERO — imagen a pantalla completa con curva inferior ── */
@@ -111,19 +117,27 @@ nav.scrolled .nav-tel {
 }
 #hero .hero-bg {
   position: absolute; inset: 0;
-  background-image: url('assets/hero-bg.png');
-  background-size: cover; background-position: center 30%;
-  animation: kenburns 18s ease-in-out infinite;
+  background-image: url('assets/aguilar-hero.jpg');
+  background-size: cover; background-position: center 42%;
+  animation: kenburns 30s ease-in-out infinite;
   will-change: transform;
+}
+#hero .hero-sunset {
+  position: absolute; inset: 0; z-index: 1; pointer-events: none;
+  background: radial-gradient(ellipse at 66% 36%,
+    rgba(255,138,24,0.22) 0%,
+    rgba(210,80,10,0.10) 42%,
+    transparent 68%);
+  animation: sunset-glow 22s ease-in-out infinite;
 }
 #hero::before {
   content: '';
   position: absolute; inset: 0;
   background: linear-gradient(to bottom,
-    rgba(30,16,10,0.45) 0%,
-    rgba(20,10,6,0.55) 60%,
-    rgba(20,10,6,0.70) 100%);
-  z-index: 1;
+    rgba(20,10,5,0.15) 0%,
+    rgba(15,8,4,0.28) 55%,
+    rgba(15,8,4,0.50) 100%);
+  z-index: 2;
 }
 .hero-inner {
   position: relative; z-index: 3;
@@ -133,17 +147,20 @@ nav.scrolled .nav-tel {
 }
 .hero-pre {
   font-size: 0.72rem; font-weight: 700; letter-spacing: 0.18em;
-  text-transform: uppercase; color: rgba(255,255,255,0.75);
+  text-transform: uppercase; color: rgba(255,255,255,0.90);
   margin-bottom: 22px;
+  text-shadow: 0 1px 8px rgba(0,0,0,0.55);
 }
 .hero-h1 {
   font-family: 'Playfair Display', serif;
   font-size: clamp(2.6rem, 5.5vw, 4.2rem);
   font-weight: 700; line-height: 1.1; color: var(--blanco); margin-bottom: 20px;
+  text-shadow: 0 2px 16px rgba(0,0,0,0.60), 0 1px 4px rgba(0,0,0,0.40);
 }
 .hero-sub {
-  font-size: 1rem; color: rgba(255,255,255,0.82);
+  font-size: 1rem; color: rgba(255,255,255,0.92);
   line-height: 1.6; margin-bottom: 36px; max-width: 520px;
+  text-shadow: 0 1px 8px rgba(0,0,0,0.55);
 }
 .hero-btns { display: flex; gap: 14px; flex-wrap: wrap; justify-content: center; }
 
@@ -581,6 +598,7 @@ footer { background: var(--acero-oscuro); color: rgba(255,255,255,0.5); padding:
 <!-- HERO -->
 <section id="hero">
   <div class="hero-bg"></div>
+  <div class="hero-sunset"></div>
   <div class="hero-inner">
     <p class="hero-pre">Clínica Dental Valencia · Aguilar de la Frontera · Córdoba</p>
     <h1 class="hero-h1">La sonrisa que mereces,<br />en manos <em>expertas</em></h1>
