@@ -4,3 +4,10 @@ package-lock.json
 .superpowers/
 *.zip
 docs/
+
+# Herramientas de construcción (no forman parte del sitio web)
+scraper.js
+scraper_more.js
+scraper_urls.js
+assets/instagram/profile.json
+assets/instagram/screenshot.png
