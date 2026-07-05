@@ -7,9 +7,16 @@
   <meta name="description" content="Clínica Dental Valencia - Dra. Carmen Valencia Fernández. Odontología general, ortodoncia e implantes en Aguilar de la Frontera. Tel: 957660565" />
   <meta property="og:title" content="Clínica Dental Valencia · Aguilar de la Frontera" />
   <meta property="og:description" content="Dra. Carmen Valencia Fernández. Odontología general, ortodoncia e implantes en Aguilar de la Frontera, Córdoba." />
-  <meta property="og:image" content="https://dentalvalenciafernandez.es/assets/aguilar-hero.png" />
+  <meta property="og:image" content="https://dentalvalenciafernandez.es/assets/og-image.jpg" />
+  <meta property="og:image:width" content="1200" />
+  <meta property="og:image:height" content="630" />
   <meta property="og:type" content="website" />
   <meta property="og:url" content="https://dentalvalenciafernandez.es" />
+  <meta property="og:locale" content="es_ES" />
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="Clínica Dental Valencia · Aguilar de la Frontera" />
+  <meta name="twitter:description" content="Dra. Carmen Valencia Fernández. Odontología general, ortodoncia e implantes en Aguilar de la Frontera, Córdoba." />
+  <meta name="twitter:image" content="https://dentalvalenciafernandez.es/assets/og-image.jpg" />
   <link rel="canonical" href="https://dentalvalenciafernandez.es" />
   <link rel="icon" href="assets/instagram/profile.jpg" />
   <link rel="stylesheet" href="assets/fonts.css" />
@@ -137,12 +144,13 @@ a { text-decoration: none; color: inherit; }
 nav {
   position: fixed; top: 0; left: 0; right: 0; z-index: 100;
   display: flex; align-items: center; justify-content: space-between;
-  padding: 0 5%; height: 88px;
-  background: transparent;
-  transition: background .35s ease, box-shadow .35s ease;
+  padding: 0 5%; height: 96px;
+  background: var(--acero-oscuro);
+  border-bottom: 3px solid var(--arena);
+  box-shadow: 0 2px 24px rgba(0,0,0,0.25);
+  transition: box-shadow .35s ease;
 }
 nav.scrolled {
-  background: var(--acero-oscuro);
   box-shadow: 0 2px 24px rgba(0,0,0,0.35);
 }
 .nav-logo { display: flex; align-items: center; gap: 14px; }
@@ -155,15 +163,15 @@ nav.scrolled {
 .nav-brand { display: flex; flex-direction: column; line-height: 1.3; }
 .nav-brand span:first-child {
   font-family: 'Playfair Display', serif;
-  font-size: 1.25rem; font-weight: 700; color: var(--blanco);
+  font-size: 1.45rem; font-weight: 700; color: var(--blanco);
 }
 .nav-brand span:last-child {
-  font-size: 0.72rem; color: var(--arena);
-  font-weight: 600; letter-spacing: 0.1em; text-transform: uppercase;
+  font-size: 0.82rem; color: var(--arena);
+  font-weight: 600; letter-spacing: 0.09em; text-transform: uppercase;
 }
 .nav-links { display: flex; gap: 28px; align-items: center; }
 .nav-links a {
-  font-size: 0.85rem; color: rgba(255,255,255,0.75);
+  font-size: 1.02rem; color: rgba(255,255,255,0.75);
   font-weight: 500; transition: color .2s;
 }
 .nav-links a:hover { color: var(--arena); }
@@ -210,8 +218,8 @@ nav.scrolled .nav-tel {
 }
 #hero .hero-bg {
   position: absolute; inset: 0;
-  background-image: url('assets/aguilar-hero.jpg');
-  background-size: cover; background-position: center 42%;
+  background-image: url('assets/hero-fachada.jpg');
+  background-size: cover; background-position: center 38%;
   animation: kenburns 30s ease-in-out infinite;
   will-change: transform;
 }
@@ -227,9 +235,18 @@ nav.scrolled .nav-tel {
   content: '';
   position: absolute; inset: 0;
   background: linear-gradient(to bottom,
-    rgba(20,10,5,0.15) 0%,
-    rgba(15,8,4,0.28) 55%,
-    rgba(15,8,4,0.50) 100%);
+    rgba(10,8,6,0.42) 0%,
+    rgba(10,8,6,0.50) 45%,
+    rgba(10,8,6,0.62) 100%);
+  z-index: 2;
+}
+#hero::after {
+  content: '';
+  position: absolute; inset: 0;
+  background: radial-gradient(ellipse 60% 55% at 50% 42%,
+    rgba(0,0,0,0.38) 0%,
+    rgba(0,0,0,0.16) 55%,
+    transparent 80%);
   z-index: 2;
 }
 .hero-inner {
@@ -239,21 +256,21 @@ nav.scrolled .nav-tel {
   max-width: 780px;
 }
 .hero-pre {
-  font-size: 0.72rem; font-weight: 700; letter-spacing: 0.18em;
+  font-size: 0.95rem; font-weight: 700; letter-spacing: 0.16em;
   text-transform: uppercase; color: rgba(255,255,255,0.90);
   margin-bottom: 22px;
-  text-shadow: 0 1px 8px rgba(0,0,0,0.55);
+  text-shadow: 0 1px 10px rgba(0,0,0,0.7), 0 1px 4px rgba(0,0,0,0.6);
 }
 .hero-h1 {
   font-family: 'Playfair Display', serif;
   font-size: clamp(2.6rem, 5.5vw, 4.2rem);
   font-weight: 700; line-height: 1.1; color: var(--blanco); margin-bottom: 20px;
-  text-shadow: 0 2px 16px rgba(0,0,0,0.60), 0 1px 4px rgba(0,0,0,0.40);
+  text-shadow: 0 2px 20px rgba(0,0,0,0.75), 0 1px 6px rgba(0,0,0,0.65), 0 4px 30px rgba(0,0,0,0.5);
 }
 .hero-sub {
   font-size: 1rem; color: rgba(255,255,255,0.92);
   line-height: 1.6; margin-bottom: 36px; max-width: 520px;
-  text-shadow: 0 1px 8px rgba(0,0,0,0.55);
+  text-shadow: 0 1px 10px rgba(0,0,0,0.7), 0 1px 4px rgba(0,0,0,0.6);
 }
 .hero-btns { display: flex; gap: 14px; flex-wrap: wrap; justify-content: center; }
 
@@ -420,8 +437,121 @@ section { padding: 96px 5%; }
 .service-card h3 { font-family: 'Playfair Display', serif; font-size: 1.1rem; font-weight: 600; margin-bottom: 8px; }
 .service-card p { color: var(--texto-mid); font-size: 0.82rem; line-height: 1.6; }
 
+/* ── INSTALACIONES ── */
+#instalaciones { background: var(--blanco); }
+.instalaciones-head { text-align: center; margin-bottom: 44px; }
+.instalaciones-head .section-sub { margin: 0 auto; }
+.instalaciones-grid {
+  display: grid; grid-template-columns: repeat(3, 1fr); grid-auto-rows: 240px;
+  gap: 16px;
+}
+.instalaciones-item {
+  position: relative; width: 100%; height: 100%; overflow: hidden;
+  border-radius: var(--r); display: block;
+  border: none; padding: 0; font-family: inherit; cursor: pointer;
+}
+.instalaciones-item img {
+  width: 100%; height: 100%; object-fit: cover;
+  transition: transform .5s ease;
+}
+.instalaciones-item:hover img { transform: scale(1.06); }
+.instalaciones-item span {
+  position: absolute; left: 0; right: 0; bottom: 0;
+  padding: 16px 18px 14px;
+  background: linear-gradient(to top, rgba(20,10,5,0.68), transparent);
+  color: var(--blanco); font-size: 0.92rem; font-weight: 600;
+  letter-spacing: 0.02em; text-align: left;
+}
+.instalaciones-item em {
+  position: absolute; top: 12px; right: 12px;
+  background: rgba(20,10,5,0.65);
+  color: var(--blanco); font-style: normal;
+  font-size: 0.7rem; font-weight: 600; letter-spacing: 0.03em;
+  padding: 5px 11px; border-radius: 50px;
+}
+
+/* ── EQUIPO ── */
+#equipo { background: var(--arena-light); }
+.equipo-head { text-align: center; margin-bottom: 48px; }
+.equipo-head .section-sub { margin: 0 auto; }
+.equipo-grupo-banner {
+  position: relative; display: block; width: 100%;
+  aspect-ratio: 3/2; max-height: 480px;
+  border: none; padding: 0; cursor: pointer;
+  border-radius: var(--r); overflow: hidden;
+  box-shadow: var(--shadow); margin-bottom: 24px;
+  transition: transform .25s ease, box-shadow .25s ease;
+}
+.equipo-grupo-banner:hover { transform: translateY(-3px); box-shadow: var(--shadow-lg); }
+.equipo-grupo-banner img { width: 100%; height: 100%; object-fit: cover; }
+.equipo-grupo-overlay {
+  position: absolute; left: 0; right: 0; bottom: 0;
+  padding: 20px 24px 16px; text-align: left;
+  background: linear-gradient(to top, rgba(20,10,5,0.7), transparent);
+  color: var(--blanco); font-family: 'Playfair Display', serif;
+  font-size: 1.1rem; font-weight: 600;
+}
+.equipo-grid {
+  display: grid; grid-template-columns: repeat(5, 1fr); gap: 18px;
+}
+.equipo-card {
+  background: var(--blanco); border-radius: var(--r); overflow: hidden;
+  box-shadow: var(--shadow); transition: transform .25s ease, box-shadow .25s ease;
+}
+.equipo-card[data-gallery] { cursor: pointer; }
+.equipo-card:hover { transform: translateY(-4px); box-shadow: var(--shadow-lg); }
+.equipo-card-img { position: relative; aspect-ratio: 3/4; overflow: hidden; }
+.equipo-card-img img { width: 100%; height: 100%; object-fit: cover; }
+.equipo-card-body { padding: 16px 14px; text-align: center; }
+.equipo-card-body strong {
+  display: block; font-family: 'Playfair Display', serif;
+  font-size: 1rem; font-weight: 600; margin-bottom: 4px;
+}
+.equipo-card-body span { color: var(--texto-mid); font-size: 0.78rem; }
+
+/* ── LIGHTBOX GALERÍA ── */
+.lightbox {
+  display: none;
+  position: fixed; inset: 0; z-index: 200;
+  background: rgba(15,8,4,0.94);
+  align-items: center; justify-content: center;
+}
+.lightbox.open { display: flex; }
+.lightbox-body {
+  display: flex; flex-direction: column; align-items: center; gap: 14px;
+  max-width: 88vw; max-height: 86vh;
+}
+.lightbox-body img {
+  max-width: 88vw; max-height: 76vh; width: auto; height: auto;
+  border-radius: 8px; box-shadow: 0 20px 60px rgba(0,0,0,0.5);
+}
+.lightbox-caption {
+  color: rgba(255,255,255,0.85); font-size: 0.85rem; text-align: center;
+}
+.lightbox-close {
+  position: absolute; top: 20px; right: 20px; z-index: 2;
+  width: 44px; height: 44px; border-radius: 50%;
+  background: rgba(255,255,255,0.1); border: 1px solid rgba(255,255,255,0.25);
+  color: var(--blanco); display: flex; align-items: center; justify-content: center;
+  cursor: pointer; transition: background .2s;
+}
+.lightbox-close:hover { background: rgba(255,255,255,0.2); }
+.lightbox-close svg { width: 20px; height: 20px; }
+.lightbox-nav {
+  position: absolute; top: 50%; transform: translateY(-50%); z-index: 2;
+  width: 52px; height: 52px; border-radius: 50%;
+  background: rgba(255,255,255,0.1); border: 1px solid rgba(255,255,255,0.25);
+  color: var(--blanco); display: flex; align-items: center; justify-content: center;
+  cursor: pointer; transition: background .2s;
+}
+.lightbox-nav:hover { background: rgba(255,255,255,0.2); }
+.lightbox-nav svg { width: 24px; height: 24px; }
+.lightbox-prev { left: 20px; }
+.lightbox-next { right: 20px; }
+.lightbox-nav[hidden] { display: none; }
+
 /* ── INSTAGRAM CTA ── */
-#galeria {
+#instagram {
   background: var(--arena-light);
   padding: 80px 5%;
   text-align: center;
@@ -656,6 +786,8 @@ footer { background: var(--acero-oscuro); color: rgba(255,255,255,0.5); padding:
   .gallery-grid { grid-template-columns: repeat(2, 1fr); }
   .contact-inner { grid-template-columns: 1fr; }
   .contact-map { height: 280px; }
+  .instalaciones-grid { grid-template-columns: repeat(2, 1fr); grid-auto-rows: 220px; }
+  .equipo-grid { grid-template-columns: repeat(3, 1fr); }
 }
 @media (max-width: 600px) {
   section { padding: 72px 5%; }
@@ -663,6 +795,8 @@ footer { background: var(--acero-oscuro); color: rgba(255,255,255,0.5); padding:
   #nosotros { border-radius: 24px 24px 0 0; margin-top: -24px; }
   .services-grid { grid-template-columns: 1fr; }
   .footer-inner { flex-direction: column; align-items: flex-start; }
+  .instalaciones-grid { grid-template-columns: 1fr 1fr; grid-auto-rows: 160px; }
+  .equipo-grid { grid-template-columns: repeat(2, 1fr); }
 }
   </style>
 </head>
@@ -682,7 +816,8 @@ footer { background: var(--acero-oscuro); color: rgba(255,255,255,0.5); padding:
   <div class="nav-links" id="nav-links">
     <a href="#nosotros">Nosotros</a>
     <a href="#servicios">Servicios</a>
-    <a href="#galeria">Galería</a>
+    <a href="#equipo">Equipo</a>
+    <a href="#instalaciones">Galería</a>
     <a href="#resenas">Reseñas</a>
     <a href="#contacto">Contacto</a>
   </div>
@@ -765,6 +900,63 @@ footer { background: var(--acero-oscuro); color: rgba(255,255,255,0.5); padding:
   </div>
 </section>
 
+<!-- INSTALACIONES -->
+<section id="instalaciones">
+  <div class="max-w">
+    <div class="instalaciones-head reveal">
+      <span class="section-label">Instalaciones</span>
+      <h2 class="section-title">Nuestra clínica renovada<br />en 2025</h2>
+      <p class="section-sub">Un espacio moderno y acogedor, diseñado para que te sientas cómodo desde el primer momento.</p>
+    </div>
+    <div class="instalaciones-grid reveal">
+      <button type="button" class="instalaciones-item" data-gallery="exterior">
+        <img src="assets/exterior-fachada.jpg" alt="Fachada exterior de la Clínica Dental Valencia" loading="lazy" />
+        <span>Exterior</span>
+      </button>
+      <button type="button" class="instalaciones-item" data-gallery="recepcion">
+        <img src="assets/instalaciones-recepcion-2.jpg" alt="Recepción de la Clínica Dental Valencia" loading="lazy" />
+        <span>Recepción</span>
+        <em>4 fotos</em>
+      </button>
+      <button type="button" class="instalaciones-item" data-gallery="despacho">
+        <img src="assets/instalaciones-despacho.jpg" alt="Despacho de la clínica" loading="lazy" />
+        <span>Despacho</span>
+      </button>
+      <button type="button" class="instalaciones-item" data-gallery="gabinete">
+        <img src="assets/instalaciones-gabinete.jpg" alt="Gabinete odontológico" loading="lazy" />
+        <span>Gabinete</span>
+        <em>2 fotos</em>
+      </button>
+      <button type="button" class="instalaciones-item" data-gallery="pasillo">
+        <img src="assets/instalaciones-pasillo.jpg" alt="Pasillo de la clínica" loading="lazy" />
+        <span>Pasillo</span>
+      </button>
+      <button type="button" class="instalaciones-item" data-gallery="rayos">
+        <img src="assets/instalaciones-rayos.jpg" alt="Sala de radiografía digital" loading="lazy" />
+        <span>Rayos X</span>
+        <em>3 fotos</em>
+      </button>
+    </div>
+  </div>
+</section>
+
+<!-- LIGHTBOX GALERÍA INSTALACIONES -->
+<div class="lightbox" id="lightbox" aria-hidden="true">
+  <button type="button" class="lightbox-close" id="lightbox-close" aria-label="Cerrar">
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M18 6L6 18M6 6l12 12"/></svg>
+  </button>
+  <button type="button" class="lightbox-nav lightbox-prev" id="lightbox-prev" aria-label="Anterior">
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M15 18l-6-6 6-6"/></svg>
+  </button>
+  <div class="lightbox-body">
+    <img src="" alt="" id="lightbox-img" />
+    <p class="lightbox-caption" id="lightbox-caption"></p>
+  </div>
+  <button type="button" class="lightbox-nav lightbox-next" id="lightbox-next" aria-label="Siguiente">
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 18l6-6-6-6"/></svg>
+  </button>
+</div>
+
 <!-- CTA STRIP -->
 <section id="cta-strip">
   <div class="cta-strip-inner">
@@ -819,8 +1011,70 @@ footer { background: var(--acero-oscuro); color: rgba(255,255,255,0.5); padding:
   </div>
 </section>
 
+<!-- EQUIPO -->
+<section id="equipo">
+  <div class="max-w">
+    <div class="equipo-head reveal">
+      <span class="section-label">Nuestro equipo</span>
+      <h2 class="section-title">Profesionales que cuidan<br />de tu sonrisa</h2>
+      <p class="section-sub">Un equipo humano y cercano, comprometido con tu salud bucodental en cada visita.</p>
+    </div>
+    <button type="button" class="equipo-grupo-banner reveal" data-gallery="equipo" data-index="0">
+      <img src="assets/equipo-grupo.jpg" alt="Equipo completo de la Clínica Dental Valencia" loading="lazy" />
+      <span class="equipo-grupo-overlay">Ver todo el equipo</span>
+    </button>
+    <div class="equipo-grid reveal">
+      <div class="equipo-card" data-gallery="equipo" data-index="1">
+        <div class="equipo-card-img">
+          <img src="assets/dra-carmen.jpg" alt="Dra. Carmen Valencia Fernández" loading="lazy" />
+        </div>
+        <div class="equipo-card-body">
+          <strong>Dra. Carmen Valencia</strong>
+          <span>Odontóloga · Nº col. 14/00/1954</span>
+        </div>
+      </div>
+      <div class="equipo-card" data-gallery="equipo" data-index="2">
+        <div class="equipo-card-img">
+          <img src="assets/equipo-araceli.jpg" alt="Araceli, higienista dental" loading="lazy" />
+        </div>
+        <div class="equipo-card-body">
+          <strong>Araceli</strong>
+          <span>Higienista dental</span>
+        </div>
+      </div>
+      <div class="equipo-card" data-gallery="equipo" data-index="3">
+        <div class="equipo-card-img">
+          <img src="assets/equipo-sonia.jpg" alt="Sonia, auxiliar dental" loading="lazy" />
+        </div>
+        <div class="equipo-card-body">
+          <strong>Sonia</strong>
+          <span>Auxiliar dental</span>
+        </div>
+      </div>
+      <div class="equipo-card" data-gallery="equipo" data-index="4">
+        <div class="equipo-card-img">
+          <img src="assets/equipo-dolores.jpg" alt="Mª Dolores, auxiliar dental" loading="lazy" />
+        </div>
+        <div class="equipo-card-body">
+          <strong>Mª Dolores</strong>
+          <span>Auxiliar dental</span>
+        </div>
+      </div>
+      <div class="equipo-card" data-gallery="equipo" data-index="5">
+        <div class="equipo-card-img">
+          <img src="assets/equipo-alex.jpg" alt="Alex, administración" loading="lazy" />
+        </div>
+        <div class="equipo-card-body">
+          <strong>Alex</strong>
+          <span>Administración</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
 <!-- INSTAGRAM -->
-<section id="galeria">
+<section id="instagram">
   <div class="ig-cta-inner reveal">
     <div class="ig-cta-icon">
       <svg viewBox="0 0 24 24"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zM12 0C8.741 0 8.333.014 7.053.072 2.695.272.273 2.69.073 7.052.014 8.333 0 8.741 0 12c0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98C8.333 23.986 8.741 24 12 24c3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98C15.668.014 15.259 0 12 0zm0 5.838a6.162 6.162 0 100 12.324 6.162 6.162 0 000-12.324zM12 16a4 4 0 110-8 4 4 0 010 8zm6.406-11.845a1.44 1.44 0 100 2.881 1.44 1.44 0 000-2.881z"/></svg>
@@ -1067,7 +1321,7 @@ footer { background: var(--acero-oscuro); color: rgba(255,255,255,0.5); padding:
     <div class="footer-links">
       <a href="#nosotros">Nosotros</a>
       <a href="#servicios">Servicios</a>
-      <a href="#galeria">Galería</a>
+      <a href="#instalaciones">Galería</a>
       <a href="#resenas">Reseñas</a>
       <a href="#contacto">Contacto</a>
       <a href="https://wa.me/34957660565" target="_blank" rel="noopener">957 660 565</a>
@@ -1151,6 +1405,123 @@ footer { background: var(--acero-oscuro); color: rgba(255,255,255,0.5); padding:
       if (btns) { btns.style.transition = 'opacity .7s ease-out .2s, transform .7s ease-out .2s'; btns.style.opacity = '1'; btns.style.transform = 'translateY(0)'; }
     });
     document.querySelectorAll('[data-count]').forEach(animateCounter);
+  });
+
+  /* Galería de instalaciones por álbumes */
+  const galerias = {
+    exterior: {
+      titulo: 'Exterior',
+      fotos: [
+        { src: 'assets/exterior-fachada.jpg', alt: 'Fachada exterior de la Clínica Dental Valencia' }
+      ]
+    },
+    recepcion: {
+      titulo: 'Recepción',
+      fotos: [
+        { src: 'assets/instalaciones-recepcion-2.jpg', alt: 'Recepción de la Clínica Dental Valencia' },
+        { src: 'assets/instalaciones-recepcion.jpg', alt: 'Recepción, vista general' },
+        { src: 'assets/instalaciones-recepcion-3.jpg', alt: 'Recepción, atención al paciente' },
+        { src: 'assets/instalaciones-recepcion-4.jpg', alt: 'Recepción, zona de espera' }
+      ]
+    },
+    despacho: {
+      titulo: 'Despacho',
+      fotos: [
+        { src: 'assets/instalaciones-despacho.jpg', alt: 'Despacho de la clínica' }
+      ]
+    },
+    gabinete: {
+      titulo: 'Gabinete',
+      fotos: [
+        { src: 'assets/instalaciones-gabinete.jpg', alt: 'Gabinete odontológico' },
+        { src: 'assets/instalaciones-gabinete-2.jpg', alt: 'Gabinete odontológico, segunda vista' }
+      ]
+    },
+    pasillo: {
+      titulo: 'Pasillo',
+      fotos: [
+        { src: 'assets/instalaciones-pasillo.jpg', alt: 'Pasillo de la clínica' }
+      ]
+    },
+    rayos: {
+      titulo: 'Rayos X',
+      fotos: [
+        { src: 'assets/instalaciones-rayos.jpg', alt: 'Sala de radiografía digital' },
+        { src: 'assets/instalaciones-rayos-3.jpg', alt: 'Sala de radiografía digital, control' },
+        { src: 'assets/instalaciones-rayos-2.jpg', alt: 'Sala de radiografía digital, en uso' }
+      ]
+    },
+    equipo: {
+      titulo: 'Nuestro equipo',
+      fotos: [
+        { src: 'assets/equipo-grupo.jpg', alt: 'Equipo completo de la Clínica Dental Valencia' },
+        { src: 'assets/dra-carmen.jpg', alt: 'Dra. Carmen Valencia Fernández' },
+        { src: 'assets/equipo-araceli.jpg', alt: 'Araceli, higienista dental' },
+        { src: 'assets/equipo-sonia.jpg', alt: 'Sonia, auxiliar dental' },
+        { src: 'assets/equipo-dolores.jpg', alt: 'Mª Dolores, auxiliar dental' },
+        { src: 'assets/equipo-alex.jpg', alt: 'Alex, administración' }
+      ]
+    }
+  };
+
+  const lightbox = document.getElementById('lightbox');
+  const lightboxImg = document.getElementById('lightbox-img');
+  const lightboxCaption = document.getElementById('lightbox-caption');
+  const lightboxPrev = document.getElementById('lightbox-prev');
+  const lightboxNext = document.getElementById('lightbox-next');
+  const lightboxClose = document.getElementById('lightbox-close');
+
+  let galeriaActual = null;
+  let indiceActual = 0;
+
+  function renderLightbox() {
+    const grupo = galerias[galeriaActual];
+    const foto = grupo.fotos[indiceActual];
+    lightboxImg.src = foto.src;
+    lightboxImg.alt = foto.alt;
+    lightboxCaption.textContent = grupo.fotos.length > 1
+      ? `${grupo.titulo} · ${indiceActual + 1}/${grupo.fotos.length}`
+      : grupo.titulo;
+    const multi = grupo.fotos.length > 1;
+    lightboxPrev.hidden = !multi;
+    lightboxNext.hidden = !multi;
+  }
+
+  function abrirGaleria(key, indiceInicial) {
+    galeriaActual = key;
+    indiceActual = indiceInicial || 0;
+    renderLightbox();
+    lightbox.classList.add('open');
+    lightbox.setAttribute('aria-hidden', 'false');
+    document.body.style.overflow = 'hidden';
+  }
+
+  function cerrarLightbox() {
+    lightbox.classList.remove('open');
+    lightbox.setAttribute('aria-hidden', 'true');
+    document.body.style.overflow = '';
+  }
+
+  function moverGaleria(delta) {
+    const grupo = galerias[galeriaActual];
+    indiceActual = (indiceActual + delta + grupo.fotos.length) % grupo.fotos.length;
+    renderLightbox();
+  }
+
+  document.querySelectorAll('[data-gallery]').forEach(btn => {
+    btn.addEventListener('click', () => abrirGaleria(btn.dataset.gallery, parseInt(btn.dataset.index, 10) || 0));
+  });
+  lightboxClose.addEventListener('click', cerrarLightbox);
+  lightboxPrev.addEventListener('click', () => moverGaleria(-1));
+  lightboxNext.addEventListener('click', () => moverGaleria(1));
+  lightbox.addEventListener('click', (e) => {
+    if (e.target === lightbox) cerrarLightbox();
+  });
+  document.addEventListener('keydown', (e) => {
+    if (!lightbox.classList.contains('open')) return;
+    if (e.key === 'Escape') cerrarLightbox();
+    if (e.key === 'ArrowLeft') moverGaleria(-1);
+    if (e.key === 'ArrowRight') moverGaleria(1);
   });
 </script>
 </body>

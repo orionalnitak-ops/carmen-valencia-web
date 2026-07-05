@@ -1,63 +1,68 @@
-# Tu Instagram → Web Profesional
+# Clínica Dental Valencia — Web
 
-Este proyecto convierte tu perfil de Instagram en una web de marca personal profesional.
+Web estática de la Clínica Dental Valencia, Dra. Carmen Valencia Fernández, Aguilar de la Frontera (Córdoba).
 
-## Comportamiento al iniciar
+## Stack
 
-Cuando el usuario abra esta carpeta y escriba cualquier cosa (incluido "hola", "qué hago", "empezar"), responde con este mensaje de bienvenida:
+- **Lenguaje:** HTML5 + CSS3 + Vanilla JS — sin frameworks, sin bundler, sin dependencias de producción
+- **Tipografías:** Inter + Playfair Display — archivos woff2 locales en `assets/fonts/`
+- **Mapa:** OpenStreetMap embed (sin Google Maps, sin API key)
+- **Dominio:** dentalvalenciafernandez.es
+- **Despliegue:** archivo estático directo — sin servidor, sin build step
 
-> **Bienvenido al creador de webs desde Instagram**
->
-> Voy a convertir tu perfil de Instagram en una web profesional de marca personal.
->
-> Solo necesito tu **@handle de Instagram** para empezar. Yo me encargo del resto: descargo tus fotos, busco tus datos en redes, y genero la web.
->
-> **¿Cuál es tu @ de Instagram?**
+## Comandos
 
-Después de eso, usa la skill `instagram-a-web` automáticamente.
+- Abrir `index.html` en el navegador — no hay servidor de desarrollo
+- `start index.html` (Windows) / `open index.html` (macOS) para preview rápido
 
-## Qué hace Claude automáticamente
-1. Entra a tu perfil de Instagram y descarga tus datos y fotos automáticamente
-2. Busca tu presencia en otras redes (Threads, TikTok, YouTube, LinkedIn...)
-3. Suma tus seguidores de todas las plataformas
-4. Busca testimonios de tus clientes si los tienes publicados
-5. Te pregunta lo que no puede encontrar solo (servicios, colores, email)
-6. Genera una web premium y la abre en tu navegador
+## Estructura
 
-## Lo que necesitas tener a mano
-
-- Tu @handle de Instagram
-- A qué te dedicas y qué servicios ofreces
-- Tu email de contacto
-- Tus colores de marca (si los tienes; si no, Claude te propone opciones)
-
-## Lo que genera
-
-- Un archivo HTML profesional que se abre en cualquier navegador
-- Hero con tu perfil de Instagram integrado (foto, stats, bio, tick verificado, mini grid de fotos)
-- Tus fotos reales de Instagram en la galería
-- Adaptado a tu tipo de marca personal (fotógrafo, coach, influencer, etc.)
-- Se ve bien en móvil, tablet y escritorio
-- Solo usa tus datos reales — nunca inventa información
-
-## Sobre las dependencias
-
-Antes de empezar, verifica si Node.js está instalado:
-```bash
-node --version 2>/dev/null && echo "Node.js OK" || echo "NO_NODE"
+```
+.
+├── index.html              ← página principal (HTML + CSS + JS en un único archivo)
+├── aviso-legal.html        ← aviso legal LSSI-CE
+├── privacidad.html         ← política de privacidad RGPD+LOPDGDD
+├── cookies.html            ← política de cookies
+├── sitemap.xml             ← sitemap SEO
+├── robots.txt              ← directivas para crawlers
+├── assets/
+│   ├── fonts.css           ← importaciones de fuentes locales
+│   ├── fonts/              ← archivos woff2 (Inter, Playfair Display)
+│   ├── instagram/          ← fotos del perfil (profile.jpg + post_1-9.jpg)
+│   ├── dra-carmen.jpg      ← retrato Dra. Carmen
+│   └── aguilar-hero.jpg    ← foto hero de Aguilar de la Frontera
+├── spec/                   ← especificaciones SDD del proyecto
+└── DESIGN.md               ← sistema de diseño completo
 ```
 
-Si no tiene Node.js, dile:
-> "Para poder acceder a tu Instagram automáticamente necesito Node.js. Es una instalación rápida de 2 minutos: ve a https://nodejs.org y descarga la versión LTS. Cuando lo tengas instalado, dime y seguimos.
->
-> Si prefieres no instalarlo, no pasa nada — te pediré los datos directamente y la web quedará igual de bien."
+## Convenciones
 
-Si tiene Node.js, instala Playwright automáticamente y sigue con el scraping. El usuario no tiene que hacer nada más.
+- Variables CSS en `:root` para todos los colores y medidas reutilizables
+- Clases en kebab-case descriptivo (`service-card`, `hero-h1`, `nav-links`)
+- Imágenes: solo rutas locales `assets/` — nunca URLs externas (Unsplash, Picsum, etc.)
+- Iconos: SVG inline — nunca emoji, nunca fuentes de iconos externas
+- Animaciones: solo `transform` y `opacity` — nunca `top`, `left`, `width`, `height`
+- Responsive: `clamp()` para tipografía, CSS Grid para layouts
 
-## Si tienes imágenes extras
+## No hagas
 
-Puedes meter fotos adicionales (retratos, logo, portfolio) en la carpeta `assets/`. Claude las usará en la web.
+- No instalar dependencias npm para el proyecto web (package.json es solo para scripts auxiliares)
+- No reemplazar OpenStreetMap con Google Maps (requeriría API key y RGPD adicional)
+- No cargar fuentes desde Google Fonts (están en local para cumplir RGPD)
+- No modificar `aviso-legal.html`, `privacidad.html` ni `cookies.html` salvo que se pida explícitamente
+- No inventar datos del negocio — teléfono, dirección, horarios y reseñas son datos reales del cliente
+- No usar librerías de animación externas (GSAP, AOS, Framer Motion están prohibidas)
+- No usar `height: 100vh` — usar `min-height: 100dvh` (compatibilidad iOS Safari)
+- No usar `backdrop-filter` salvo en el nav (rendimiento en móviles)
 
-## Después de generar
+## Flujo de trabajo
 
-Dile a Claude qué quieres cambiar: colores, textos, secciones, fotos. Itera hasta que te guste.
+- Antes de una tarea no trivial, propón un plan y espera confirmación
+- Una tarea a la vez; al terminar, informa qué cambiaste para que lo revise
+- Si no estás seguro al 80%, pregunta — nunca inventes información de la clínica
+
+## Documentación
+
+- Sistema de diseño completo (colores, tipografía, componentes, antipatrones): `DESIGN.md`
+- Especificaciones por sección: `spec/features/`
+- Constitución del proyecto: `spec/constitution/`
