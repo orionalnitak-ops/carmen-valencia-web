@@ -492,7 +492,8 @@ section { padding: 96px 5%; }
   font-size: 1.1rem; font-weight: 600;
 }
 .equipo-grid {
-  display: grid; grid-template-columns: repeat(5, 1fr); gap: 18px;
+  display: grid; grid-template-columns: repeat(3, 1fr); gap: 18px;
+  max-width: 780px; margin: 0 auto;
 }
 .equipo-card {
   background: var(--blanco); border-radius: var(--r); overflow: hidden;
@@ -1035,6 +1036,15 @@ footer { background: var(--acero-oscuro); color: rgba(255,255,255,0.5); padding:
       </div>
       <div class="equipo-card" data-gallery="equipo" data-index="2">
         <div class="equipo-card-img">
+          <img src="assets/equipo-alejandro.jpg" alt="Dr. Alejandro Zamora Girón, odontólogo" loading="lazy" />
+        </div>
+        <div class="equipo-card-body">
+          <strong>Dr. Alejandro Zamora</strong>
+          <span>Odontólogo</span>
+        </div>
+      </div>
+      <div class="equipo-card" data-gallery="equipo" data-index="3">
+        <div class="equipo-card-img">
           <img src="assets/equipo-araceli.jpg" alt="Araceli, higienista dental" loading="lazy" />
         </div>
         <div class="equipo-card-body">
@@ -1042,7 +1052,7 @@ footer { background: var(--acero-oscuro); color: rgba(255,255,255,0.5); padding:
           <span>Higienista dental</span>
         </div>
       </div>
-      <div class="equipo-card" data-gallery="equipo" data-index="3">
+      <div class="equipo-card" data-gallery="equipo" data-index="4">
         <div class="equipo-card-img">
           <img src="assets/equipo-sonia.jpg" alt="Sonia, auxiliar dental" loading="lazy" />
         </div>
@@ -1051,7 +1061,7 @@ footer { background: var(--acero-oscuro); color: rgba(255,255,255,0.5); padding:
           <span>Auxiliar dental</span>
         </div>
       </div>
-      <div class="equipo-card" data-gallery="equipo" data-index="4">
+      <div class="equipo-card" data-gallery="equipo" data-index="5">
         <div class="equipo-card-img">
           <img src="assets/equipo-dolores.jpg" alt="Mª Dolores, auxiliar dental" loading="lazy" />
         </div>
@@ -1060,7 +1070,7 @@ footer { background: var(--acero-oscuro); color: rgba(255,255,255,0.5); padding:
           <span>Auxiliar dental</span>
         </div>
       </div>
-      <div class="equipo-card" data-gallery="equipo" data-index="5">
+      <div class="equipo-card" data-gallery="equipo" data-index="6">
         <div class="equipo-card-img">
           <img src="assets/equipo-alex.jpg" alt="Alex, administración" loading="lazy" />
         </div>
@@ -1456,6 +1466,7 @@ footer { background: var(--acero-oscuro); color: rgba(255,255,255,0.5); padding:
       fotos: [
         { src: 'assets/equipo-grupo.jpg', alt: 'Equipo completo de la Clínica Dental Valencia' },
         { src: 'assets/dra-carmen.jpg', alt: 'Dra. Carmen Valencia Fernández' },
+        { src: 'assets/equipo-alejandro.jpg', alt: 'Dr. Alejandro Zamora Girón, odontólogo' },
         { src: 'assets/equipo-araceli.jpg', alt: 'Araceli, higienista dental' },
         { src: 'assets/equipo-sonia.jpg', alt: 'Sonia, auxiliar dental' },
         { src: 'assets/equipo-dolores.jpg', alt: 'Mª Dolores, auxiliar dental' },
